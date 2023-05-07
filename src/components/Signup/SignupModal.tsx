@@ -1,13 +1,16 @@
 import { FormEvent, useState } from "react"
+import { setName } from "../../redux/username/username-slice"
+import { useDispatch } from "react-redux/es/exports"
 
 
 export const SignupModal = () => {
-    const [userName, setUserName] = useState("")
+  const [userName, setUserName] = useState("")
+  const dispatch = useDispatch()
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
 
-        console.log(userName)
+        dispatch(setName(userName))
     }
 
   return (

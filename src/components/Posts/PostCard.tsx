@@ -1,18 +1,21 @@
+import { useSelector } from "react-redux";
 import { DataType } from "../../types/data"
+import { RootState } from "../../redux/username/store";
+
 
 interface PostCardProps {
     post: DataType
 }
 
 function timeAgo(timestampStr: string): string {
-  // convert the timestamp string to a Date object
+  
   const timestamp = new Date(timestampStr);
 
-  // calculate the time difference between now and the given timestamp
+  
   const now = new Date();
   const delta = now.getTime() - timestamp.getTime();
 
-  // convert the time difference to a human-readable string
+  
   if (delta > 86400000) { // 1 day in milliseconds
     const days = Math.floor(delta / 86400000);
     return `${days} day${days > 1 ? 's' : ''} ago`;
@@ -30,7 +33,10 @@ function timeAgo(timestampStr: string): string {
 
 
 const PostCard = ({ post }: PostCardProps) => {
-  console.log(post.created_datetime)
+  const username = useSelector((state: RootState) => state.name.value);
+
+  console.log(username);
+
 
   return (
     <div className="flex flex-col rounded-xl border-[1px] border-black">
