@@ -1,3 +1,4 @@
+import Signup from "./pages/Signup"
 
 
 function App() {
@@ -5,9 +6,9 @@ function App() {
 
   return (
     <>
-      <div className="h-screen w-screen bg-red-500">
+      <div className="min-h-screen w-screen">
 
-        <h1>Teste</h1>
+        <Signup />
       </div>
     </>
   )
