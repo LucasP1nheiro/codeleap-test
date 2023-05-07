@@ -1,3 +1,4 @@
+import { Posts } from "./pages/Posts"
 import Signup from "./pages/Signup"
 
 
@@ -8,7 +9,8 @@ function App() {
     <>
       <div className="min-h-screen w-screen">
 
-        <Signup />
+        {/*<Signup />*/}
+        <Posts />
       </div>
     </>
   )

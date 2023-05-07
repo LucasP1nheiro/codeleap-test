@@ -9,6 +9,9 @@ module.exports = {
       backgroundColor: {
         'default': '#dddddd',
         'paleBlue': '#7695EC'
+      },
+      textColor: {
+        'strongGray': '#777777',
       }
 
     },

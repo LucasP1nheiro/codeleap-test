@@ -22,6 +22,7 @@ export const SignupModal = () => {
             placeholder="John doe"
             name="username"
             type="text"
+            id="username"
             className="outline-none rounded-xl border-[1px] border-black p-1"
             onChange = {(e) => setUserName(e.target.value)}
           />
