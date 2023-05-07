@@ -35,7 +35,7 @@ function timeAgo(timestampStr: string): string {
 const PostCard = ({ post }: PostCardProps) => {
   const username = useSelector((state: RootState) => state.name.value);
 
-  console.log(username);
+  console.log(post.title);
 
 
   return (

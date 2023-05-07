@@ -1,17 +1,32 @@
-import { useEffect, useState } from "react"
+import {  useEffect, useState } from "react"
 import { DataType } from "../../types/data"
 import { getPosts } from "../../actions/fetchApi"
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/username/store";
 
 export function usePosts() {
-    const [data, setData] = useState<DataType[] | null>(null)
+  const [data, setData] = useState<DataType[] | null>(null)
+  const [refetchData, setRefetchData] = useState(1)
+  const username = useSelector((state: RootState) => state.name.value);
+  const navigate = useNavigate()
 
-    const handleDataUpdate = (data: DataType[]) => {
-        setData(data)
-    }
-      
-      useEffect(() => {
-        getPosts({ setData: handleDataUpdate })
-      }, [])
+  //if user is not authenticated then redirect to login page
+  if (username === "") navigate('/')
+
+  const handleDataUpdate = (newdata: DataType[]) => {
+    setData(newdata)
     
-    return data
+  }
+    
+  
+    useEffect(() => {
+      getPosts({ setData: handleDataUpdate })
+    }, [refetchData])
+  
+  return {
+    data,
+    refetchData,
+    setRefetchData
+  }
 }

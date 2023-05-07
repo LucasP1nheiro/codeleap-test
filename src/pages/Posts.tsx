@@ -7,7 +7,7 @@ import PostCard from "../components/Posts/PostCard"
 
 
 export const Posts = () => {
-    const data = usePosts()
+    const {data} = usePosts()
     
     
   return (

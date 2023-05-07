@@ -1,12 +1,18 @@
-import { useState } from "react"
+import { useFormPost } from "../../hooks/posts/useFormPost"
 
 
 const FormPost = () => {
-    const [title, setTitle] = useState("")
-    const [content, setContent] = useState("")
+  const {
+    title,
+    setTitle,
+    content,
+    setContent,
+    handleSubmit,
+  } = useFormPost()
 
   return (
-      <form
+    <form
+        onSubmit={handleSubmit}
         className="flex flex-col border-[1px] border-black p-4 rounded-xl gap-4"
       >
           <h1 className="text-2xl font-semibold"><strong>What's on your mind?</strong></h1>
@@ -24,6 +30,7 @@ const FormPost = () => {
                 id="title"
                 name="title"  
                 type="text"
+                value={title}
                 placeholder="Hello world"
                 className="outline-none rounded-xl border-[1px] border-black p-1"
                 onChange={(e) => setTitle(e.target.value)}
@@ -43,6 +50,7 @@ const FormPost = () => {
                 id="content"
                 name="content"  
                 placeholder="Content here"
+                value={content}
                 className="outline-none rounded-xl border-[1px] border-black p-1"
                 onChange={(e) => setContent(e.target.value)}
             />
