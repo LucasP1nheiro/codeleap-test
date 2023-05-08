@@ -6,10 +6,11 @@ import { changePost, getPosts } from "../../actions/fetchApi";
 interface UseUpdatePostProps {
     openChangeModal: (bool: boolean) => void,
     setData: (data: DataType[]) => void,
-    id: number
+    id: number,
+    page: number
 }
 
-export function useUpdatePost({setData, id, openChangeModal} : UseUpdatePostProps) {
+export function useUpdatePost({setData, id, openChangeModal, page} : UseUpdatePostProps) {
     const [post, setPost] = useState<ChangePostType>({
         title: '',
         content: ''
@@ -22,7 +23,7 @@ export function useUpdatePost({setData, id, openChangeModal} : UseUpdatePostProp
 
         //refetching data
         try {
-            getPosts({setData})
+            getPosts({setData, page})
         } finally {
             openChangeModal(false)
         }

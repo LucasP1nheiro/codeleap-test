@@ -4,15 +4,16 @@ import { DataType } from "../../types/data";
 interface ChangePostProps {
   openChangeModal: (bool: boolean) => void,
   setData: (data: DataType[]) => void,
-  id: number
+  id: number,
+  page: number
 }
 
-const ChangePost = ({ openChangeModal, setData, id }: ChangePostProps) => {
+const ChangePost = ({ openChangeModal, setData, id, page }: ChangePostProps) => {
   const {
     post,
     setPost,
     handleSubmit
-  } = useUpdatePost({setData, id, openChangeModal})
+  } = useUpdatePost({setData, id, openChangeModal, page})
 
   return (
     <div className="w-screen h-screen bg-black/60 flex items-center justify-center p-4 fixed top-0 left-0">

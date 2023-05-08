@@ -69,6 +69,7 @@ export const Posts = () => {
                   openDeleteModal={setOpenDeleteModal}
                   id={currentId}
                   setData={setData}
+                  page={currentPage}
               />
           )}
 
@@ -77,6 +78,7 @@ export const Posts = () => {
                   openChangeModal={setOpenChangeModal}
                   setData={setData}
                   id={currentId}
+                  page={currentPage}
               />
           )}
     </div>

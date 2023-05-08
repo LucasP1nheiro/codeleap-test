@@ -18,7 +18,6 @@ export const getPosts = async ({ setData, page }: getPostsProps) => {
     try {
       const response = await axios.get(`https://dev.codeleap.co.uk/careers/?offset=${page * 10}`)
       setData(response.data.results)
-      console.log(response.data)
     } catch (error) {
       console.error(error)
     }

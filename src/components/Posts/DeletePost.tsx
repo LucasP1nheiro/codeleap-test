@@ -6,11 +6,12 @@ import { DataType } from "../../types/data";
 interface DelePostProps {
   openDeleteModal: (bool: boolean) => void;
   id: number,
-  setData: (data: DataType[]) => void
+  setData: (data: DataType[]) => void,
+  page: number
 }
 
-const DeletePost = ({ openDeleteModal, id, setData }: DelePostProps) => {
-  const handleDelete = useDeletePost({ id, openDeleteModal, setData })
+const DeletePost = ({ openDeleteModal, id, setData, page }: DelePostProps) => {
+  const handleDelete = useDeletePost({ id, openDeleteModal, setData, page })
   
  
   return (
