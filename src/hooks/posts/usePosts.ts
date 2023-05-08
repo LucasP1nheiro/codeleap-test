@@ -2,14 +2,13 @@ import {  useEffect, useState } from "react"
 import { DataType } from "../../types/data"
 import { getPosts } from "../../actions/fetchApi"
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/username/store";
+
 
 export function usePosts() {
   const [data, setData] = useState<DataType[] | null>(null)
   const [openChangeModal, setOpenChangeModal] = useState(false)
   const [openDeleteModal, setOpenDeleteModal] = useState(false)
-  const username = useSelector((state: RootState) => state.name.value);
+  const username = localStorage.getItem('username');
   const navigate = useNavigate()
 
   //this id will be passed on the delete and patch request
@@ -25,6 +24,7 @@ export function usePosts() {
 
   }
     
+  
   
   useEffect(() => {
     getPosts({ setData: handleDataUpdate })

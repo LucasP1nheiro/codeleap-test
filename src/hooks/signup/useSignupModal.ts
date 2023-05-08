@@ -13,6 +13,8 @@ export function useSignupModal() {
 
         dispatch(setName(userName))
 
+        localStorage.setItem('username', userName);
+
         navigate('/posts')
     }
 

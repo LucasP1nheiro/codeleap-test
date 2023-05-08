@@ -11,7 +11,7 @@ interface PostCardProps {
 
 export function usePostCard({ post, openChangeModal, openDeleteModal, setCurrentId }: PostCardProps) {
     
-    const username = useSelector((state: RootState) => state.name.value);
+    const username = localStorage.getItem('username');
 
     const handleClickDelete = () => {
         openDeleteModal(true)
