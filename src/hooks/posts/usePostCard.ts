@@ -1,5 +1,4 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/username/store";
+
 import { DataType } from "../../types/data";
 
 interface PostCardProps {

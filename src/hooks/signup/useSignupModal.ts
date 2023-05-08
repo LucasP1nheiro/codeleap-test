@@ -10,7 +10,7 @@ export function useSignupModal() {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
-
+        
         dispatch(setName(userName))
 
         localStorage.setItem('username', userName);
