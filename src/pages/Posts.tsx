@@ -32,13 +32,14 @@ export const Posts = () => {
           </header>
           <main className="bg-white xl:w-1/2 md:w-2/3 w-full h-full p-8 flex flex-col gap-4">
               <FormPost setData={setData} />
-              {data?.map(post => (
+              {data?.map((post, index) => (
                   <PostCard
                       post={post}
                       key={post.id}
                       openChangeModal={setOpenChangeModal}
                       openDeleteModal={setOpenDeleteModal}
                       setCurrentId={setCurrentId}
+                      index={index}
                   />
               ))}
           </main>
