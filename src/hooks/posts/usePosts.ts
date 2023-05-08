@@ -7,26 +7,37 @@ import { RootState } from "../../redux/username/store";
 
 export function usePosts() {
   const [data, setData] = useState<DataType[] | null>(null)
-  const [refetchData, setRefetchData] = useState(1)
+  const [openChangeModal, setOpenChangeModal] = useState(false)
+  const [openDeleteModal, setOpenDeleteModal] = useState(false)
   const username = useSelector((state: RootState) => state.name.value);
   const navigate = useNavigate()
 
+  //this id will be passed on the delete and patch request
+  const [currentId, setCurrentId] = useState(0)
+
   //if user is not authenticated then redirect to login page
-  if (username === "") navigate('/')
+  useEffect(() => {
+    if (username === "") navigate('/')
+  }, [])
 
   const handleDataUpdate = (newdata: DataType[]) => {
     setData(newdata)
-    
+
   }
     
   
-    useEffect(() => {
-      getPosts({ setData: handleDataUpdate })
-    }, [refetchData])
+  useEffect(() => {
+    getPosts({ setData: handleDataUpdate })
+  }, [])
   
   return {
     data,
-    refetchData,
-    setRefetchData
+    setData,
+    setOpenChangeModal,
+    setOpenDeleteModal,
+    openChangeModal,
+    openDeleteModal,
+    currentId,
+    setCurrentId
   }
 }

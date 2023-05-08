@@ -8,7 +8,9 @@ module.exports = {
     extend: {
       backgroundColor: {
         'default': '#dddddd',
-        'paleBlue': '#7695EC'
+        'paleBlue': '#7695EC',
+        'red': '#FF5151',
+        'green': '#47B960'
       },
       textColor: {
         'strongGray': '#777777',

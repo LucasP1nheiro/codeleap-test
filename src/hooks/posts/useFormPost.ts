@@ -1,15 +1,20 @@
 import { FormEvent, useState } from "react";
-import { createPost } from "../../actions/fetchApi";
+import { createPost, getPosts } from "../../actions/fetchApi";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/username/store";
 import { PostType } from "../../types/post";
-import { usePosts } from "./usePosts";
+import { DataType } from "../../types/data";
 
-export function useFormPost() {
+
+interface FormPostPros {
+  setData: (data: DataType[]) => void
+}
+
+
+export function useFormPost({setData} : FormPostPros) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const username = useSelector((state: RootState) => state.name.value);
-  const { refetchData, setRefetchData } = usePosts();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -20,13 +25,14 @@ export function useFormPost() {
       content,
     };
 
+
     await createPost(post); // Wait for the post to be created
 
     setTitle("");
     setContent("");
 
-    // Flag to refetch the data
-    setRefetchData((prev) => prev + 1);
+    //refetching data
+    await getPosts({setData})
   };
 
   return {

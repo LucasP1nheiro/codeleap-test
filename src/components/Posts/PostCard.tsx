@@ -1,47 +1,39 @@
-import { useSelector } from "react-redux";
+import { usePostCard } from "../../hooks/posts/usePostCard"
 import { DataType } from "../../types/data"
-import { RootState } from "../../redux/username/store";
+import { timeAgo } from "../../utils/timeAgo"
+import deleteImage from '../../assets/delete.svg'
+import change from '../../assets/change.svg'
 
 
 interface PostCardProps {
-    post: DataType
-}
-
-function timeAgo(timestampStr: string): string {
-  
-  const timestamp = new Date(timestampStr);
-
-  
-  const now = new Date();
-  const delta = now.getTime() - timestamp.getTime();
-
-  
-  if (delta > 86400000) { // 1 day in milliseconds
-    const days = Math.floor(delta / 86400000);
-    return `${days} day${days > 1 ? 's' : ''} ago`;
-  } else if (delta >= 3600000) { // 1 hour in milliseconds
-    const hours = Math.floor(delta / 3600000);
-    return `${hours} hour${hours > 1 ? 's' : ''} ago`;
-  } else if (delta >= 60000) { // 1 minute in milliseconds
-    const minutes = Math.floor(delta / 60000);
-    return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
-  } else {
-    return 'just now';
-  }
+  post: DataType,
+  openChangeModal: (bool: boolean) => void,
+  openDeleteModal: (bool: boolean) => void,
+  setCurrentId: (n: number) => void
 }
 
 
 
-const PostCard = ({ post }: PostCardProps) => {
-  const username = useSelector((state: RootState) => state.name.value);
 
-  console.log(post.title);
 
+const PostCard = ({ post, openChangeModal, openDeleteModal, setCurrentId }: PostCardProps) => {
+ 
+  const {
+    username,
+    handleClickChange,
+    handleClickDelete
+  } = usePostCard({post, openChangeModal, openDeleteModal, setCurrentId})
 
   return (
     <div className="flex flex-col rounded-xl border-[1px] border-black">
       <div className="bg-paleBlue flex justify-between p-4 rounded-t-xl">
         <h1 className="text-2xl text-white font-medium">{post.title}</h1>
+        {username === post.username && (
+        <div className="flex gap-4">
+          <button onClick={() => handleClickDelete()}><img src={deleteImage} alt="Delete" /></button>
+          <button onClick={() => handleClickChange()}><img src={change} alt="Change" /></button>
+        </div>
+        )}
       </div>
 
       <div className="flex justify-between p-4">
@@ -50,7 +42,7 @@ const PostCard = ({ post }: PostCardProps) => {
       </div>
 
       <div className="p-4">
-        <p>{post.content}</p>
+        <p className="w-4/5">{post.content}</p>
       </div>
     </div>
   )
