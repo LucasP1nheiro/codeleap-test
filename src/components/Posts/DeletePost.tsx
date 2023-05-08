@@ -22,13 +22,13 @@ const DeletePost = ({ openDeleteModal, id, setData, page }: DelePostProps) => {
               <div className='flex gap-4 items-center justify-end'>
                   
                   <button
-                    className="px-8 py-2 rounded-xl border-[1px] border-black font-semibold"
+                    className="px-8 py-2 rounded-xl border-[1px] border-black font-semibold hover:bg-default duration-500"
                     onClick={() => openDeleteModal(false)}
                   >
                     Cancel
                   </button>
                   <button
-                    className="px-8 py-2 rounded-xl bg-red font-semibold text-white"
+                    className="px-8 py-2 rounded-xl bg-red font-semibold text-white hover:bg-red/50 duration-500"
                     onClick={() => handleDelete()}
                   >
                     Delete

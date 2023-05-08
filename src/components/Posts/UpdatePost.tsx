@@ -65,12 +65,12 @@ const ChangePost = ({ openChangeModal, setData, id, page }: ChangePostProps) => 
             className="w-full flex justify-end items-center gap-4"
           >
           <button
-            className="px-8 py-2 rounded-xl border-[1px] border-black font-semibold"
+            className="px-8 py-2 rounded-xl border-[1px] border-black font-semibold hover:bg-default duration-500"
             onClick={() => openChangeModal(false)}
           >
             Cancel
           </button>
-            <button className="px-8 py-2 rounded-xl bg-green font-semibold text-white">Save</button>
+            <button className="px-8 py-2 rounded-xl bg-green font-semibold text-white hover:bg-green/40 duration-500">Save</button>
         </div>
         
 

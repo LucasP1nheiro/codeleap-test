@@ -30,7 +30,7 @@ export const SignupModal = () => {
           >
             <button
                 type="submit"
-                className={userName === "" ? "bg-default px-8 py-2 rounded-xl w-fit text-white uppercase justify-end" : "bg-paleBlue px-8 py-2 rounded-xl w-fit text-white uppercase justify-end"}
+                className={userName === "" ? "bg-default px-8 py-2 rounded-xl w-fit text-white uppercase justify-end" : "bg-paleBlue px-8 py-2 rounded-xl w-fit text-white uppercase justify-end hover:bg-paleBlue/50 duration-500"}
                 disabled={userName === ""}
             >
                 Enter
