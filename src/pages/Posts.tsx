@@ -4,6 +4,7 @@ import DeletePost from '../components/Posts/DeletePost'
 import PostCard from "../components/Posts/PostCard"
 import UpdatePost from '../components/Posts/UpdatePost'
 import Logout from '../components/Posts/Logout'
+import { ArrowLeft, ArrowRight } from 'phosphor-react'
 
 
 
@@ -18,7 +19,10 @@ export const Posts = () => {
         openDeleteModal,
         setOpenDeleteModal,
         currentId,
-        setCurrentId
+        setCurrentId,
+        currentPage,
+        handleNextPage,
+        handlePrevPage
     } = usePosts()
    
     
@@ -42,6 +46,22 @@ export const Posts = () => {
                       index={index}
                   />
               ))}
+
+              <div className="flex gap-8 items-center justify-center mt-5">
+                  <button
+                      className="cursor-pointer"
+                      onClick={() => handlePrevPage()}
+                  >
+                    <ArrowLeft size={24}/>
+                  </button>
+                  <p>{currentPage + 1}</p>
+                  <button
+                      className="cursor-pointer"
+                      onClick={() => handleNextPage()}
+                  >
+                    <ArrowRight size={24}/>
+                  </button>
+              </div>
           </main>
 
           {openDeleteModal && (
