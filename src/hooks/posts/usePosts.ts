@@ -12,6 +12,7 @@ export  function usePosts()  {
   const navigate = useNavigate()
   const [pageLimit, setPageLimit] = useState(0)
   const [currentPage, setCurrentPage] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
 
 
   //this id will be passed on the delete and patch request
@@ -45,6 +46,10 @@ export  function usePosts()  {
     getPosts({ setData: handleDataUpdate, page: currentPage })
   }, [])
 
+  useEffect(() => {
+    if (data !== null) setIsLoading(false)
+  }, [data])
+
   //refetch everytime the page changes
   useEffect(() => {
     getPosts({ setData: handleDataUpdate, page: currentPage })
@@ -61,6 +66,8 @@ export  function usePosts()  {
     setCurrentId,
     currentPage,
     handlePrevPage,
-    handleNextPage
+    handleNextPage,
+    isLoading,
+    setIsLoading
   }
 }

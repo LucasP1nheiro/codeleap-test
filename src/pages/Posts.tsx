@@ -5,6 +5,7 @@ import PostCard from "../components/Posts/PostCard"
 import UpdatePost from '../components/Posts/UpdatePost'
 import Logout from '../components/Posts/Logout'
 import { ArrowLeft, ArrowRight } from 'phosphor-react'
+import Loading from '../components/Loading/Loading'
 
 
 
@@ -22,7 +23,8 @@ export const Posts = () => {
         setCurrentId,
         currentPage,
         handleNextPage,
-        handlePrevPage
+        handlePrevPage,
+        isLoading
     } = usePosts()
    
     
@@ -34,7 +36,8 @@ export const Posts = () => {
               <h1 className="text-2xl text-white font-medium">CodeLeap Network</h1>
               <Logout />
           </header>
-          <main className="bg-white xl:w-1/2 md:w-2/3 w-full h-full p-8 flex flex-col gap-4">
+          {!isLoading && (
+              <main className="bg-white xl:w-1/2 md:w-2/3 w-full h-full p-8 flex flex-col gap-4">
               <FormPost setData={setData} />
               {data?.map((post, index) => (
                   <PostCard
@@ -63,6 +66,14 @@ export const Posts = () => {
                   </button>
               </div>
           </main>
+          )}
+
+          {isLoading && (
+              <div className="bg-white xl:w-1/2 md:w-2/3 w-full h-screen  flex items-center justify-center">
+                  
+                  <Loading />
+              </div>
+          )}
 
           {openDeleteModal && (
               <DeletePost
