@@ -38,7 +38,7 @@ export const Posts = () => {
           </header>
           {!isLoading && (
               <main className="bg-white xl:w-1/2 md:w-2/3 w-full h-full p-8 flex flex-col gap-4">
-              <FormPost setData={setData} />
+              <FormPost setData={setData} page={currentPage} />
               {data?.map((post, index) => (
                   <PostCard
                       post={post}

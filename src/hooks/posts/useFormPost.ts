@@ -5,11 +5,12 @@ import { DataType } from "../../types/data";
 
 
 interface FormPostPros {
-  setData: (data: DataType[]) => void
+  setData: (data: DataType[]) => void,
+  page: number
 }
 
 
-export function useFormPost({setData} : FormPostPros) {
+export function useFormPost({setData, page} : FormPostPros) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const username = localStorage.getItem('username') || "";
@@ -30,7 +31,7 @@ export function useFormPost({setData} : FormPostPros) {
     setContent("");
 
     //refetching data
-    await getPosts({setData})
+    await getPosts({setData, page})
   };
 
   return {

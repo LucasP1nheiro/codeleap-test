@@ -2,17 +2,18 @@ import { useFormPost } from "../../hooks/posts/useFormPost"
 import { DataType } from "../../types/data"
 
 interface FormPostPros {
-  setData: (data: DataType[]) => void
+  setData: (data: DataType[]) => void,
+  page: number
 }
 
-const FormPost = ({setData} : FormPostPros) => {
+const FormPost = ({setData, page} : FormPostPros) => {
   const {
     title,
     setTitle,
     content,
     setContent,
     handleSubmit,
-  } = useFormPost({setData})
+  } = useFormPost({setData, page})
 
   return (
     <form
